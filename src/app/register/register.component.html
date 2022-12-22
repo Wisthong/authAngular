@@ -1,0 +1,114 @@
+<form [formGroup]="registerForm" (ngSubmit)="onRegister()">
+  <mat-form-field class="w-full">
+    <mat-label>Email</mat-label>
+    <input
+      type="email"
+      matInput
+      formControlName="email"
+      placeholder="Ex. pat@example.com"
+    />
+    <mat-error
+      *ngIf="
+        registerForm.controls['email'].touched &&
+        registerForm.controls['email'].hasError('required')
+      "
+    >
+      Campo requerido
+    </mat-error>
+    <mat-error
+      *ngIf="
+        registerForm.controls['email'].touched &&
+        registerForm.controls['email'].hasError('email')
+      "
+    >
+      Debes ingresar un email
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-full">
+    <mat-label>Password</mat-label>
+    <input
+      type="password"
+      matInput
+      formControlName="password"
+      placeholder="*******"
+    />
+    <mat-error
+      *ngIf="
+        registerForm.controls['password'].touched &&
+        registerForm.controls['password'].hasError('required')
+      "
+    >
+      Campo requerido
+    </mat-error>
+    <mat-error
+      *ngIf="
+        registerForm.controls['password'].touched &&
+        registerForm.controls['password'].hasError('minlength')
+      "
+    >
+      Debes ingresar al menos 5 caracteres
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-full">
+    <mat-label>Name</mat-label>
+    <input type="text" matInput formControlName="name" placeholder="David" />
+    <mat-error
+      *ngIf="
+        registerForm.controls['name'].touched &&
+        registerForm.controls['name'].hasError('required')
+      "
+    >
+      Campo requerido
+    </mat-error>
+    <mat-error
+      *ngIf="
+        registerForm.controls['name'].touched &&
+        registerForm.controls['name'].hasError('minlength')
+      "
+    >
+      Debes ingresar al menos 5 caracteres
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="w-full">
+    <mat-label>Lastname</mat-label>
+    <input
+      type="text"
+      matInput
+      formControlName="lastname"
+      placeholder="Martinez"
+    />
+    <mat-error
+      *ngIf="
+        registerForm.controls['lastname'].touched &&
+        registerForm.controls['lastname'].hasError('required')
+      "
+    >
+      Campo requerido
+    </mat-error>
+    <mat-error
+      *ngIf="
+        registerForm.controls['lastname'].touched &&
+        registerForm.controls['lastname'].hasError('minlength')
+      "
+    >
+      Debes ingresar al menos 5 caracteres
+    </mat-error>
+  </mat-form-field>
+
+  <div class="grid grid-cols-2 gap-4">
+    <button mat-fab extended color="warn" class="">
+      <mat-icon>how_to_reg</mat-icon>
+      Register
+    </button>
+    <div class="ml-2 mt-3">
+      <a
+        [routerLink]="['/login']"
+        class="hover:text-2xl hover:underline hover:text-blue-800"
+        >Login</a
+      >
+    </div>
+  </div>
+</form>
